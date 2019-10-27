@@ -1,7 +1,7 @@
 // livroController.js
 // Import livro model
 Livro = require('../model/livroModel');
-// Handle index actions
+// listar livros
 exports.index = function (req, res) {
     Livro.get(function (err, livros) {
         if (err) {
@@ -12,60 +12,66 @@ exports.index = function (req, res) {
         }
         res.json({
             status: "success",
-            message: "Livros retrieved successfully",
+            message: "Livros listados com sucesso",
             data: livros
         });
     });
 };
-// Handle create livro actions
+// criar livro
 exports.new = function (req, res) {
     var livro = new Livro();
-    livro.name = req.body.name ? req.body.name : livro.name;
-    livro.gender = req.body.gender;
-    livro.email = req.body.email;
-    livro.phone = req.body.phone;
-// save the livro and check for errors
+    livro.nome_livro = req.body.nome_livro ? req.body.nome_livro : livro.nome_livro;
+    livro.subtitulo = req.body.subtitulo;
+    livro.sinopse = req.body.sinopse;
+    livro.autor = req.body.autor;
+    livro.editora = req.body.editora;
+    livro.n_paginas = req.body.n_paginas;
+    livro.n_disp = req.body.n_disp;
+    //salvar livro e checar erro
     livro.save(function (err) {
-        // if (err)
-        //     res.json(err);
-res.json({
-            message: 'New livro created!',
+        if (err)
+            res.json(err);
+        res.json({
+            message: 'Novo livro criado!',
             data: livro
         });
     });
 };
-// Handle view livro info
+// visuzlizar informações livro 
 exports.view = function (req, res) {
     Livro.findById(req.params.livro_id, function (err, livro) {
         if (err)
             res.send(err);
         res.json({
-            message: 'Livro details loading..',
+            message: 'Carregando detalhes do livro',
             data: livro
         });
     });
 };
-// Handle update livro info
+// atualizar livro
 exports.update = function (req, res) {
-Livro.findById(req.params.livro_id, function (err, livro) {
+    Livro.findById(req.params.livro_id, function (err, livro) {
         if (err)
             res.send(err);
-livro.name = req.body.name ? req.body.name : livro.name;
-        livro.gender = req.body.gender;
-        livro.email = req.body.email;
-        livro.phone = req.body.phone;
-// save the livro and check for errors
+        livro.nome_livro = req.body.nome_livro ? req.body.nome_livro : livro.nome_livro;
+        livro.subtitulo = req.body.subtitulo;
+        livro.sinopse = req.body.sinopse;
+        livro.autor = req.body.autor;
+        livro.editora = req.body.editora;
+        livro.n_paginas = req.body.n_paginas;
+        livro.n_disp = req.body.n_disp;
+// salvar livro e checar error
         livro.save(function (err) {
             if (err)
                 res.json(err);
             res.json({
-                message: 'Livro Info updated',
+                message: 'informação do livro atualizada',
                 data: livro
             });
         });
     });
 };
-// Handle delete livro
+// deletar livro
 exports.delete = function (req, res) {
     Livro.remove({
         _id: req.params.livro_id
@@ -74,7 +80,7 @@ exports.delete = function (req, res) {
             res.send(err);
 res.json({
             status: "success",
-            message: 'Livro deleted'
+            message: 'Livro apagado'
         });
     });
 };

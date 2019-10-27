@@ -2,16 +2,19 @@
 var mongoose = require('mongoose');
 // Setup schema
 var livroSchema = mongoose.Schema({
-    name: {
+    nome_livro: {
         type: String,
         required: true
     },
-    email: {
+    subtitulo: {
         type: String,
         required: true
     },
-    gender: String,
-    phone: String,
+    sinopse:{ type:String, required:true}, 
+    autor: String,
+    editora: { type:String, required:true},
+    n_pagina: Number,
+    n_disp: Number,
     create_date: {
         type: Date,
         default: Date.now
