@@ -13,7 +13,7 @@ var livroSchema = mongoose.Schema({
     sinopse:{ type:String, required:true}, 
     autor: String,
     editora: { type:String, required:true},
-    n_pagina: Number,
+    n_paginas: Number,
     n_disp: Number,
     create_date: {
         type: Date,

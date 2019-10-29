@@ -1,17 +1,17 @@
 // livroController.js
 // Import livro model
-Livro = require('../model/livroModel');
+Livro = require('../model/livroModel.js');
 // listar livros
 exports.index = function (req, res) {
     Livro.get(function (err, livros) {
         if (err) {
             res.json({
-                status: "error",
+                status: "erro",
                 message: err,
             });
         }
         res.json({
-            status: "success",
+            status: "sucesso",
             message: "Livros listados com sucesso",
             data: livros
         });
@@ -79,7 +79,7 @@ exports.delete = function (req, res) {
         if (err)
             res.send(err);
 res.json({
-            status: "success",
+            status: "successo",
             message: 'Livro apagado'
         });
     });

@@ -24,8 +24,8 @@ exports.new = function (req, res) {
     usuario.codigo = req.body.codigo;
     usuario.email = req.body.email;
     usuario.senha = req.body.senha;
-    usuario.serie - req.body.serie;
     usuario.telefone = req.body.telefone;
+    usuario.serie - req.body.serie;
     // salvar usuarios e verificação de erros
     usuario.save(function (err) {
         if (err)
