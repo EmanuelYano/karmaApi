@@ -36,6 +36,8 @@ router.route('/livros/:livro_id')
 //Logar
 router.route('/logar')
     .post(usuarioController.logar);
-
+//Duplicidade
+router.route('/duplicidade')
+    .post(usuarioController.verDupli);
 // Export API routes
 module.exports = router;

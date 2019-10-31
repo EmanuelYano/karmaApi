@@ -78,9 +78,23 @@ exports.delete = function (req, res) {
             res.send(err);
         res.json({
             situacao: "sucesso",
-            mensagem: 'Usuario deletado'
+            mensagem: 'Usuario deletado',
+            usuario
         });
     });
+};
+//verificar email cadastrado
+exports.verDupli = function(req, res){
+    console.log(req.params)
+    Usuario.findOne({email:req.body.email}, function(err, usuario){
+        console.log(usuario)
+        if (err)
+            res.send(err);
+        res.json({
+            usuario
+        });
+    });
+
 };
 
 //logar
