@@ -49,17 +49,8 @@ exports.view = function (req, res) {
 };
 // Atualizar usuarios
 exports.update = function (req, res) {
-Usuario.findById(req.params.usuario_id, function (err, usuario) {
-        if (err)
-            res.send(err);
-        usuario.nome = req.body.nome ? req.body.nome : usuario.nome;
-        usuario.codigo = req.body.codigo;
-        usuario.email = req.body.email;
-        usuario.telefone = req.body.telefone;
-        usuario.senha = req.body.senha;
-        usuario.serie - req.body.serie;
-        // salvar e verificar erros
-        usuario.save(function (err) {
+    console.log(JSON.stringify(req.body))
+    Usuario.findByIdAndUpdate(req.body._id,req.body, function (err, usuario) {
             if (err)
                 res.json(err);
             res.json({
@@ -67,7 +58,6 @@ Usuario.findById(req.params.usuario_id, function (err, usuario) {
                 dados: usuario
             });
         });
-    });
 };
 // deletar usuario
 exports.delete = function (req, res) {

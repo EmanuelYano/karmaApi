@@ -14,11 +14,11 @@ var usuarioController = require('./controller/usuarioController');
 // Usuario routes
 router.route('/usuarios')
     .get(usuarioController.index)
+    .put(usuarioController.update)//fazer igual nos outros
     .post(usuarioController.new);
 router.route('/usuarios/:usuario_id')
     .get(usuarioController.view)
-    .patch(usuarioController.update)
-    .put(usuarioController.update)
+    .patch(usuarioController.update)    
     .delete(usuarioController.delete);
 
 // Import livro controller
@@ -26,11 +26,11 @@ var livroController = require('./controller/livroController');
 // Livro routes
 router.route('/livros')
     .get(livroController.index)
-    .post(livroController.new);
+    .post(livroController.new)
+    .put(livroController.update);
 router.route('/livros/:livro_id')
     .get(livroController.view)
     .patch(livroController.update)
-    .put(livroController.update)
     .delete(livroController.delete);
 
 //Logar

@@ -1,5 +1,6 @@
 // usuarioModel.js
 var mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 // Setup schema
 var usuarioSchema = mongoose.Schema({
     nome: {

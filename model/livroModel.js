@@ -1,5 +1,6 @@
 // livroModel.js
 var mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 // Setup schema
 var livroSchema = mongoose.Schema({
     nome_livro: {
@@ -15,6 +16,7 @@ var livroSchema = mongoose.Schema({
     editora: { type:String, required:true},
     n_paginas: Number,
     n_disp: Number,
+    categoria: String,
     create_date: {
         type: Date,
         default: Date.now
