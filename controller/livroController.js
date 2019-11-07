@@ -21,6 +21,7 @@ exports.index = function (req, res) {
 exports.new = function (req, res) {
     var livro = new Livro();
     livro.nome_livro = req.body.nome_livro ? req.body.nome_livro : livro.nome_livro;
+    livro.imageData = req.body.imageData;
     livro.subtitulo = req.body.subtitulo;
     livro.sinopse = req.body.sinopse;
     livro.autor = req.body.autor;
@@ -28,6 +29,7 @@ exports.new = function (req, res) {
     livro.n_paginas = req.body.n_paginas;
     livro.n_disp = req.body.n_disp;
     //salvar livro e checar erro
+    //console.log(JSON.stringify(livro))
     livro.save(function (err) {
         if (err)
             res.json(err);

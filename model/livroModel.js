@@ -7,6 +7,7 @@ var livroSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    imageData: { type: String, required: false},
     subtitulo: {
         type: String,
         required: true

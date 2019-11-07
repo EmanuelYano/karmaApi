@@ -33,6 +33,23 @@ router.route('/livros/:livro_id')
     .patch(livroController.update)
     .delete(livroController.delete);
 
+// Import reserva controller
+var reservaController = require('./controller/reservaController');
+// Usuario routes
+router.route('/reserva')
+    .get(reservaController.index)
+    .put(reservaController.update)//fazer igual nos outros
+    .post(reservaController.new);
+router.route('/reserva/:reserva_id')
+    .get(reservaController.view)
+    .patch(reservaController.update)    
+    .delete(reservaController.delete);
+router.route('/reserva/livro/:livro')
+    .get(reservaController.viewByLivro)
+router.route('/reserva/usuario/:usuario')
+    .get(reservaController.viewByUsuario)
+
+
 //Logar
 router.route('/logar')
     .post(usuarioController.logar);
