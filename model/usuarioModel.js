@@ -21,6 +21,8 @@ var usuarioSchema = mongoose.Schema({
     },
     telefone: String,
     serie: String,
+    turma: String,
+    imageData: { type: String, required: false},
     create_date: {
         type: Date,
         default: Date.now

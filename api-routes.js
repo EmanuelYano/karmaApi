@@ -21,6 +21,10 @@ router.route('/usuarios/:usuario_id')
     .patch(usuarioController.update)    
     .delete(usuarioController.delete);
 
+router.route('/email')
+    .post(usuarioController.verEmail)
+
+
 // Import livro controller
 var livroController = require('./controller/livroController');
 // Livro routes

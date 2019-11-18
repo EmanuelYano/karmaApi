@@ -25,7 +25,9 @@ exports.new = function (req, res) {
     usuario.email = req.body.email;
     usuario.senha = req.body.senha;
     usuario.telefone = req.body.telefone;
-    usuario.serie - req.body.serie;
+    usuario.serie = req.body.serie;
+    usuario.turma = req.body.turma;
+    usuario.imageData = req.body.imageData;
     // salvar usuarios e verificação de erros
     usuario.save(function (err) {
         if (err)
@@ -47,9 +49,22 @@ exports.view = function (req, res) {
         });
     });
 };
+// Handle view usuario info 2.0
+exports.verEmail = function (req, res) {
+    Usuario.findOne({email:req.body.email}, function (err, usuario) {
+        console.log(usuario)
+        console.log("passei aqui")
+        console.log(req.body.email)
+        if (err)
+            res.send(err);
+        res.json({
+            usuario
+        });
+    });
+};
 // Atualizar usuarios
 exports.update = function (req, res) {
-    console.log(JSON.stringify(req.body))
+    // console.log(JSON.stringify(req.body))
     Usuario.findByIdAndUpdate(req.body._id,req.body, function (err, usuario) {
             if (err)
                 res.json(err);
@@ -75,9 +90,11 @@ exports.delete = function (req, res) {
 };
 //verificar email cadastrado
 exports.verDupli = function(req, res){
-    console.log(req.params)
-    Usuario.findOne({email:req.body.email}, function(err, usuario){
-        console.log(usuario)
+    // console.log(req.params)
+    // console.log(req.body.email)
+    // console.log(req.body.codigo)
+    Usuario.findOne({email:req.body.email, codigo:req.body.codigo}, function(err, usuario){
+        // console.log(usuario)
         if (err)
             res.send(err);
         res.json({
@@ -89,9 +106,9 @@ exports.verDupli = function(req, res){
 
 //logar
 exports.logar = function (req, res) {
-    console.log(req.params)
+    // console.log(req.params)
     Usuario.findOne({email:req.body.email, senha:req.body.senha}, function (err, usuario) {
-        console.log(usuario)
+        // console.log(usuario)
         if (err)
             res.send(err);
         res.json({
