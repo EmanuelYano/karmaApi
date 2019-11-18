@@ -20,7 +20,7 @@ router.route('/usuarios/:usuario_id')
     .get(usuarioController.view)
     .patch(usuarioController.update)    
     .delete(usuarioController.delete);
-
+//Buscar usuario por email
 router.route('/email')
     .post(usuarioController.verEmail)
 
@@ -41,7 +41,7 @@ router.route('/livros/:livro_id')
 var reservaController = require('./controller/reservaController');
 // Usuario routes
 router.route('/reserva')
-    .get(reservaController.index)
+    //.get(reservaController.index)
     .put(reservaController.update)//fazer igual nos outros
     .post(reservaController.new);
 router.route('/reserva/:reserva_id')
@@ -60,5 +60,6 @@ router.route('/logar')
 //Duplicidade
 router.route('/duplicidade')
     .post(usuarioController.verDupli);
+
 // Export API routes
 module.exports = router;
