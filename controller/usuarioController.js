@@ -93,7 +93,7 @@ exports.verDupli = function(req, res){
     // console.log(req.params)
     // console.log(req.body.email)
     // console.log(req.body.codigo)
-    Usuario.findOne({email:req.body.email, codigo:req.body.codigo}, function(err, usuario){
+    Usuario.findOne({email:req.body.email}, function(err, usuario){
         // console.log(usuario)
         if (err)
             res.send(err);

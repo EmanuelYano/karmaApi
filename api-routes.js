@@ -20,10 +20,6 @@ router.route('/usuarios/:usuario_id')
     .get(usuarioController.view)
     .patch(usuarioController.update)    
     .delete(usuarioController.delete);
-//Buscar usuario por email
-router.route('/email')
-    .post(usuarioController.verEmail)
-
 
 // Import livro controller
 var livroController = require('./controller/livroController');
@@ -60,6 +56,9 @@ router.route('/logar')
 //Duplicidade
 router.route('/duplicidade')
     .post(usuarioController.verDupli);
+//Buscar usuario por email
+router.route('/email')
+    .post(usuarioController.verEmail)
 
 // Export API routes
 module.exports = router;
